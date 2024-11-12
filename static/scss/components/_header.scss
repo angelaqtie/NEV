@@ -1,0 +1,104 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  h2 {
+    z-index: 1;
+    text-transform: lowercase;
+    span {
+      color: $clr-primary;
+    }
+    @include mediaQuery {
+      padding: 3rem 0;
+    }
+  }
+  &__wrapper {
+    z-index: 1;
+    border-bottom: 1px solid $clr-light;
+  }
+  .nav {
+    ul {
+      z-index: 999;
+      li {
+        position: relative;
+        a {
+          padding: 3rem 2.5rem;
+          display: block;
+          font-weight: 400;
+          @include mediaQuery {
+            border-bottom: 1px solid gray;
+            margin: 0 2rem;
+          }
+        }
+      }
+      li.active::after {
+        @include mediaQuery {
+          display: none;
+        }
+        content: "";
+        height: 0.8rem;
+        width: 100%;
+        background-color: $clr-primary;
+        display: block;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        border-radius: 1.6rem;
+      }
+      @include mediaQuery {
+        transition: 0.5s ease;
+        display: block;
+        position: absolute;
+        right: -100%;
+        top: 9.4rem;
+        background-color: $clr-dark;
+        width: 50%;
+        height: 100vh;
+      }
+    }
+  }
+  .toggle__menu {
+    display: none;
+    @include mediaQuery {
+      display: block;
+    }
+    z-index: 1;
+    cursor: pointer;
+    span {
+      display: block;
+      width: 5rem;
+      height: 1rem;
+      background-color: $clr-primary;
+      margin-bottom: 0.5rem;
+      border-radius: 1.6rem;
+    }
+  }
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 20rem;
+        background-image: linear-gradient(black, transparent);
+        top:0;
+    }
+}
+
+.nav.open {
+  ul {
+    right: 0;
+  }
+}
+
+.toggle__menu.open {
+  span:nth-child(1) {
+    transition: 0.5s ease;
+    transform: translate(-2px, 15.3px) rotate(45deg);
+  }
+  span:nth-child(2){
+      opacity: 0;
+  }
+  span:nth-child(3) {
+      transition: 0.5s ease;
+      transform: translate(-2px, -14.3px) rotate(-45deg);
+  }
+}
